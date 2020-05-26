@@ -1,0 +1,141 @@
+{
+  "name": "component-library",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./dist/server.js",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "buildDev": "rimraf dist && webpack --mode development --config webpack.server.config.js && webpack --mode development --config webpack.dev.config.js",
+    "buildProd": "rimraf dist && webpack --mode production --config webpack.server.config.js && webpack --mode production --config webpack.prod.config.js",
+    "lint": "eslint src",
+    "lint:diff": "lint-staged",
+    "lint:all": "eslint src && stylelint ./src/**/*.scss && stylelint src/**/*.js",
+    "lint:css": "stylelint src/**/*.js",
+    "commit": "git cz",
+    "commitmsg": "commit-message-validator",
+    "precommit": "yarn lint:diff"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "commit-message-validator": {
+      "pattern": [
+        "^[a-zA-Z0-9 _-]+(\\([0-9]+\\)){0,1}: .+$"
+      ],
+      "errorMessage": "Commit message must be in format: `feat(123): aaa`; use `git cz` command to create commit with proper message"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "eslint"
+    ],
+    "src/**/*.jsx": [
+      "eslint"
+    ],
+    "src/**/*.scss": [
+      "stylelint --syntax scss"
+    ],
+    "*.js": "eslint --cache --fix",
+    "*.css": "stylelint --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hot-loader/react-dom": "^16.13.0",
+    "@stripe/react-stripe-js": "^1.1.2",
+    "@stripe/stripe-js": "^1.3.1",
+    "axios": "^0.19.2",
+    "babel-plugin-styled-components": "^1.10.6",
+    "babel-plugin-syntax-class-properties": "^6.13.0",
+    "commit-message-validator": "^0.1.11",
+    "express": "^4.17.1",
+    "js-cookie": "^2.2.1",
+    "prop-types": "^15.7.2",
+    "query-string": "^6.11.1",
+    "react": "^16.13.1",
+    "react-click-outside": "^3.0.1",
+    "react-color": "^2.18.0",
+    "react-datepicker": "^2.14.1",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^5.2.1",
+    "react-hot-loader": "^4.12.21",
+    "react-icons": "^3.8.0",
+    "react-phone-input-2": "^2.12.1",
+    "recompose": "^0.30.0",
+    "sharp": "^0.25.2",
+    "styled-components": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=4.3.2"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
+      "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
+    }
+  },
+  "devDependencies": {
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^24.1.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "eslint-loader": "^2.1.1",
+    "html-loader": "^0.5.5",
+    "jest": "^24.1.0",
+    "mini-css-extract-plugin": "^0.4.5",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "uglifyjs-webpack-plugin": "^1.3.0",
+    "url-loader": "^1.1.2",
+    "webpack-dev-middleware": "^3.4.0",
+    "webpack-hot-middleware": "^2.24.3",
+    "webpack-node-externals": "^1.7.2",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "@svgr/cli": "^5.2.0",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "css-loader": "^3.5.3",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb": "18.1.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "2.20.1",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "7.19.0",
+    "eslint-plugin-react-hooks": "2.5.0",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.2.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.6",
+    "node-sass": "^4.13.1",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
+    "sass": "^1.26.5",
+    "sass-extract": "^2.1.0",
+    "sass-extract-js": "^0.4.0",
+    "sass-extract-loader": "^1.1.0",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.0",
+    "stylelint": "^13.5.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0",
+    "svg-inline-loader": "^0.8.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
