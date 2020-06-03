@@ -46,7 +46,7 @@ Button.propTypes = {
   secundairy: propTypes.bool,
   disabled: propTypes.bool,
   light: propTypes.bool,
-  width: propTypes.number,
+  width: propTypes.string,
   textAlign: propTypes.string,
   verticalAlign: propTypes.string,
   horizontalAlign: propTypes.string,
